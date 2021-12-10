@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./ZenQuote.css";
 
 class ZenQuote extends Component {
     constructor(props) {
@@ -14,7 +15,11 @@ class ZenQuote extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="zenQuote">
+                <div className="loader">
+                    <div className="blobOne"></div>
+                    <div className="blobTwo"></div>
+                </div>
                 <h1>Always remember...</h1>
                 {this.state.quote}
             </div>

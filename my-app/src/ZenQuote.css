@@ -1,0 +1,54 @@
+.zenQuote {
+    display: inline-block;
+}
+.loader {
+    background-color: rgb(154, 153, 153);
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.blobOne,
+.blobTwo {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.blobOne {
+    left: 20%;
+    animation: osc-l 2.5s ease infinite;
+    background-color: pink;
+}
+.blobTwo {
+    left: 80%;
+    animation: osc-r 2.5s ease infinite;
+    background-color: rgb(45, 148, 148);
+}
+@keyframes osc-l {
+    0% {
+        left: 20%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 20%;
+    }
+}
+@keyframes osc-r {
+    0% {
+        left: 80%;
+    }
+    50% {
+        left: 50%;
+    }
+    100% {
+        left: 80%;
+    }
+}
