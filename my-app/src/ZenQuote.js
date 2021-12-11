@@ -5,23 +5,36 @@ import "./ZenQuote.css";
 class ZenQuote extends Component {
     constructor(props) {
         super(props);
-        this.state = { quote: "" };
+        this.state = { quote: "", isLoaded: false };
     }
 
     componentDidMount() {
-        axios
-            .get("https://api.github.com/zen")
-            .then((responce) => this.setState({ quote: responce.data }));
+        axios.get("https://api.github.com/zen").then((responce) =>
+            setTimeout(
+                function () {
+                    this.setState({ quote: responce.data, isLoaded: true });
+                }.bind(this),
+                3000
+            )
+        );
     }
+
     render() {
         return (
-            <div className="zenQuote">
-                <div className="loader">
-                    <div className="blobOne"></div>
-                    <div className="blobTwo"></div>
-                </div>
-                <h1>Always remember...</h1>
-                {this.state.quote}
+            <div>
+                {this.state.isLoaded ? (
+                    <div>
+                        <h1>Always remember...</h1>
+                        <p>{this.state.quote}</p>
+                    </div>
+                ) : (
+                    <div className="zenQuote">
+                        <div className="loader">
+                            <div className="blobOne"></div>
+                            <div className="blobTwo"></div>
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
